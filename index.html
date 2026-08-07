@@ -1,0 +1,843 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Nicoll Soria · Portafolio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Quicksand:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg-deep:#050308;
+  --bg-mid:#120a24;
+  --lilac-1:rgba(180,130,240,.14);
+  --lilac-2:#8e6fd4;
+  --lilac-3:#b784f0;
+  --violet-deep:#a259e8;
+  --violet-bright:#c98bff;
+  --pink-soft:#ff9fe0;
+  --gold:#ffe9a8;
+  --ink:#f1e9fb;
+  --dim:#b6a4d6;
+  --white-soft:#fffdfa;
+  --shadow-lilac: 0 10px 34px rgba(178,110,255,.28);
+  --glow-strong: 0 0 24px rgba(190,120,255,.55), 0 0 60px rgba(150,80,255,.25);
+  --radius: 22px;
+}
+*{box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{
+  margin:0;
+  font-family:'Quicksand',sans-serif;
+  color:var(--ink);
+  background:
+    radial-gradient(ellipse 60% 40% at 15% 8%, rgba(168,90,255,.35), transparent 60%),
+    radial-gradient(ellipse 50% 35% at 88% 20%, rgba(255,140,220,.22), transparent 60%),
+    radial-gradient(ellipse 55% 45% at 50% 90%, rgba(120,60,220,.28), transparent 65%),
+    radial-gradient(circle at 50% 0%, #140a26 0%, #08040f 55%, #030106 100%);
+  min-height:100vh;
+  position:relative;
+  overflow-x:hidden;
+}
+h1,h2,h3,.logo,.nav a,.game-title{font-family:'Fredoka',sans-serif;}
+
+/* ---------- LIGHTING (spotlights) ---------- */
+#lighting{position:fixed;inset:0;z-index:0;pointer-events:none;overflow:hidden;mix-blend-mode:screen;}
+.spotlight{position:absolute;border-radius:50%;filter:blur(60px);animation:pulseGlow 7s ease-in-out infinite;}
+.spotlight.s1{width:46vw;height:46vw;left:-12vw;top:-14vw;background:radial-gradient(circle,rgba(178,110,255,.55),transparent 70%);}
+.spotlight.s2{width:36vw;height:36vw;right:-10vw;top:10vh;background:radial-gradient(circle,rgba(255,130,220,.4),transparent 70%);animation-delay:1.5s;}
+.spotlight.s3{width:50vw;height:50vw;left:20vw;bottom:-22vw;background:radial-gradient(circle,rgba(130,70,255,.4),transparent 70%);animation-delay:3s;}
+@keyframes pulseGlow{0%,100%{opacity:.55;transform:scale(1);}50%{opacity:.9;transform:scale(1.12);}}
+
+/* ---------- STARS ---------- */
+#stars{position:fixed;inset:0;z-index:0;pointer-events:none;overflow:hidden;}
+.star{position:absolute;background:#fff;border-radius:50%;opacity:.85;
+  box-shadow:0 0 6px 1px rgba(255,255,255,.9);
+  animation:twinkle 3s ease-in-out infinite;}
+@keyframes twinkle{0%,100%{opacity:.2;transform:scale(.7);}50%{opacity:1;transform:scale(1.3);}}
+
+/* ---------- BUTTERFLIES (3D) ---------- */
+#butterflies{position:fixed;inset:0;z-index:1;pointer-events:none;overflow:hidden;perspective:900px;}
+.butterfly{position:absolute;width:46px;height:46px;opacity:.95;animation:fly3d linear infinite;
+  transform-style:preserve-3d;filter:drop-shadow(0 6px 14px rgba(0,0,0,.55));}
+.butterfly .wing-l,.butterfly .wing-r{position:absolute;top:0;width:50%;height:100%;
+  animation:flap3d 0.4s ease-in-out infinite alternate;backface-visibility:visible;}
+.butterfly .wing-l{left:0;transform-origin:right center;}
+.butterfly .wing-r{right:0;transform-origin:left center;animation-direction:alternate-reverse;}
+@keyframes flap3d{0%{transform:rotateY(0deg);}100%{transform:rotateY(70deg);}}
+@keyframes fly3d{
+  0%{transform:translate3d(-10vw,10vh,0) rotate(0deg) rotateX(10deg);}
+  25%{transform:translate3d(28vw,-8vh,60px) rotate(10deg) rotateX(-8deg);}
+  50%{transform:translate3d(58vw,18vh,-40px) rotate(-8deg) rotateX(12deg);}
+  75%{transform:translate3d(88vw,-4vh,30px) rotate(8deg) rotateX(-6deg);}
+  100%{transform:translate3d(115vw,14vh,0) rotate(0deg) rotateX(10deg);}
+}
+
+/* ---------- NAV ---------- */
+.topbar{
+  position:sticky;top:0;z-index:50;
+  display:flex;align-items:center;justify-content:space-between;
+  padding:14px 28px;
+  background:rgba(14,7,26,.55);
+  backdrop-filter:blur(16px);
+  border-bottom:1px solid rgba(190,130,255,.25);
+  box-shadow:0 4px 30px rgba(0,0,0,.4);
+}
+.logo-wrap{display:flex;align-items:center;gap:12px;cursor:pointer;}
+.logo-badge{
+  width:52px;height:52px;border-radius:50%;
+  background:conic-gradient(from 180deg, var(--lilac-3), var(--pink-soft), var(--gold), var(--lilac-3));
+  display:flex;align-items:center;justify-content:center;
+  box-shadow:0 0 0 3px rgba(255,255,255,.12), var(--glow-strong);
+  position:relative;
+}
+.logo-badge::after{content:"✦";position:absolute;top:-6px;right:-4px;color:var(--gold);font-size:14px;text-shadow:0 0 8px #fff;}
+.logo-badge span{
+  font-weight:700;color:#1c0e2e;font-size:18px;letter-spacing:1px;
+  text-shadow:0 1px 2px rgba(255,255,255,.4);
+}
+.logo-text{font-weight:700;color:var(--ink);font-size:19px;line-height:1;}
+.logo-text small{display:block;font-family:'Quicksand';font-weight:600;font-size:11px;color:var(--violet-bright);letter-spacing:2px;}
+
+.nav{display:flex;gap:6px;flex-wrap:wrap;}
+.nav a{
+  padding:9px 16px;border-radius:999px;color:var(--dim);
+  text-decoration:none;font-weight:600;font-size:14.5px;
+  transition:.25s;
+}
+.nav a:hover,.nav a.active{background:var(--violet-deep);color:#fff;box-shadow:var(--glow-strong);}
+
+/* ---------- SECTIONS ---------- */
+main{position:relative;z-index:2;}
+section{display:none;padding:70px 8vw 90px;min-height:70vh;animation:fadeIn .6s ease;}
+section.active{display:block;}
+@keyframes fadeIn{from{opacity:0;transform:translateY(14px);}to{opacity:1;transform:translateY(0);}}
+
+.card{
+  background:linear-gradient(160deg,rgba(40,22,64,.6),rgba(18,10,32,.6));
+  backdrop-filter:blur(10px);
+  border-radius:var(--radius);
+  border:1px solid rgba(190,130,255,.22);
+  box-shadow:var(--shadow-lilac);
+}
+
+/* ---------- HERO / INICIO ---------- */
+.hero{display:flex;gap:50px;align-items:center;flex-wrap:wrap;justify-content:center;text-align:left;}
+.hero-text{flex:1;min-width:280px;}
+.hero-text h1{font-size:clamp(32px,5vw,54px);color:var(--ink);margin:0 0 10px;line-height:1.1;text-shadow:0 0 30px rgba(178,110,255,.4);}
+.hero-text .accent{color:var(--violet-bright);position:relative;text-shadow:0 0 18px rgba(201,139,255,.8);}
+.hero-text p.tag{font-size:18px;color:var(--dim);margin:0 0 26px;}
+.badge-row{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:24px;}
+.badge-row span{background:rgba(40,22,64,.6);border:1px solid rgba(190,130,255,.3);padding:8px 14px;border-radius:999px;font-size:13px;font-weight:600;color:var(--ink);box-shadow:0 4px 12px rgba(0,0,0,.3);}
+.btn-primary{
+  background:linear-gradient(135deg,var(--lilac-3),var(--violet-deep));
+  color:#fff;border:none;padding:14px 30px;border-radius:999px;
+  font-family:'Fredoka';font-size:16px;cursor:pointer;box-shadow:var(--glow-strong);
+  transition:.25s;
+}
+.btn-primary:hover{transform:translateY(-3px);}
+.photo-frame{
+  width:270px;height:330px;border-radius:32px;
+  background:linear-gradient(160deg,#1c0f30,#0c0616);
+  border:4px solid rgba(190,130,255,.4);box-shadow:var(--glow-strong);
+  display:flex;align-items:center;justify-content:center;overflow:hidden;position:relative;
+}
+.photo-frame img{width:100%;height:100%;object-fit:cover;display:none;}
+.photo-frame .placeholder-icon{font-size:70px;opacity:.5;filter:drop-shadow(0 0 12px rgba(190,130,255,.6));}
+.photo-frame::before{content:"";position:absolute;inset:-3px;border-radius:32px;
+  background:conic-gradient(var(--lilac-3),var(--pink-soft),var(--gold),var(--lilac-3));
+  z-index:-1;filter:blur(14px);opacity:.7;}
+#photoUpload{display:none;}
+.photo-edit-btn{
+  position:absolute;bottom:10px;right:10px;background:rgba(28,15,48,.85);border:1px solid rgba(190,130,255,.4);
+  border-radius:50%;width:38px;height:38px;box-shadow:0 3px 10px rgba(0,0,0,.4);
+  cursor:pointer;font-size:16px;
+}
+
+/* ---------- BIOGRAFIA ---------- */
+.bio-wrap{display:flex;gap:44px;flex-wrap:wrap;align-items:flex-start;}
+.bio-photo{position:relative;}
+.as-stamp{
+  position:absolute;bottom:-18px;left:-18px;width:74px;height:74px;border-radius:50%;
+  background:radial-gradient(circle at 35% 30%, #fff, var(--pink-soft) 60%, var(--lilac-3));
+  display:flex;align-items:center;justify-content:center;
+  font-family:'Fredoka';font-weight:700;font-size:22px;color:#2a1345;
+  border:3px solid rgba(255,255,255,.7);box-shadow:var(--glow-strong);
+  transform:rotate(-12deg);
+}
+.bio-content{flex:1;min-width:300px;}
+.bio-content h2{color:var(--ink);font-size:30px;margin-bottom:6px;text-shadow:0 0 24px rgba(178,110,255,.4);}
+.bio-content .desc{font-size:16px;line-height:1.7;color:var(--dim);margin-bottom:26px;}
+.data-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:16px;}
+.data-item{
+  background:rgba(40,22,64,.55);border:1px solid rgba(190,130,255,.2);padding:16px 18px;border-radius:16px;box-shadow:0 6px 16px rgba(0,0,0,.3);
+  display:flex;align-items:center;gap:12px;
+}
+.data-item .ico{font-size:22px;filter:drop-shadow(0 0 6px rgba(190,130,255,.6));}
+.data-item .lab{font-size:12px;text-transform:uppercase;letter-spacing:1px;color:var(--violet-bright);font-weight:700;}
+.data-item .val{font-size:15px;font-weight:600;color:var(--ink);}
+
+/* ---------- UNIDADES ---------- */
+.unit-tabs{display:flex;gap:12px;margin-bottom:34px;flex-wrap:wrap;}
+.unit-tab{
+  padding:12px 22px;border-radius:16px;background:rgba(40,22,64,.55);font-family:'Fredoka';font-weight:600;
+  color:var(--dim);cursor:pointer;box-shadow:0 6px 16px rgba(0,0,0,.3);border:2px solid rgba(190,130,255,.2);
+}
+.unit-tab.active{border-color:var(--violet-bright);background:rgba(162,89,232,.3);color:var(--ink);box-shadow:var(--glow-strong);}
+.unit-panel{display:none;}
+.unit-panel.active{display:block;animation:fadeIn .5s ease;}
+h2.section-title{color:var(--ink);font-size:30px;margin-bottom:8px;text-shadow:0 0 24px rgba(178,110,255,.4);}
+p.section-sub{color:var(--dim);margin-bottom:30px;}
+
+.topic-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:20px;}
+.topic-card{
+  padding:22px;cursor:pointer;transition:.25s;position:relative;overflow:hidden;
+}
+.topic-card:hover{transform:translateY(-5px);box-shadow:var(--glow-strong);}
+.topic-card h3{margin:0 0 8px;color:var(--ink);font-size:18px;}
+.topic-card p{margin:0;font-size:14px;color:var(--dim);line-height:1.5;}
+.topic-card .go{margin-top:14px;font-size:13px;font-weight:700;color:var(--violet-bright);}
+.topic-card .num{position:absolute;top:-6px;right:2px;font-size:52px;font-weight:700;color:rgba(178,110,255,.12);}
+
+/* expandable unit1 detail */
+.detail-body{display:none;margin-top:14px;padding-top:14px;border-top:1px dashed rgba(190,130,255,.3);font-size:14px;line-height:1.6;color:var(--dim);}
+.topic-card.open .detail-body{display:block;}
+
+/* ---------- MODAL (unidad 2 y 3) ---------- */
+.modal-overlay{
+  position:fixed;inset:0;background:rgba(3,1,8,.75);backdrop-filter:blur(6px);
+  display:none;align-items:center;justify-content:center;z-index:200;padding:20px;
+}
+.modal-overlay.active{display:flex;}
+.modal-box{
+  background:linear-gradient(180deg,#1a0d2e,#0c0616);
+  border:1px solid rgba(190,130,255,.3);
+  border-radius:26px;max-width:680px;width:100%;max-height:85vh;overflow-y:auto;
+  padding:34px 30px;box-shadow:0 20px 70px rgba(0,0,0,.6), var(--glow-strong);position:relative;
+}
+.modal-close{position:absolute;top:16px;right:18px;background:rgba(162,89,232,.25);border:1px solid rgba(190,130,255,.3);
+  width:34px;height:34px;border-radius:50%;font-size:16px;cursor:pointer;color:var(--ink);}
+.modal-box h3{color:var(--ink);font-size:24px;margin:0 0 18px;text-shadow:0 0 20px rgba(178,110,255,.5);}
+.modal-box .field-lab{color:var(--violet-bright);font-family:'Fredoka';font-weight:600;font-size:14px;margin:16px 0 4px;text-transform:uppercase;letter-spacing:.5px;}
+.modal-box p, .modal-box li{font-size:14.5px;line-height:1.65;color:var(--dim);margin:4px 0;}
+.modal-box pre{
+  background:#050308;color:#d9c4fb;border:1px solid rgba(190,130,255,.25);padding:14px 16px;border-radius:14px;overflow-x:auto;
+  font-size:13px;line-height:1.6;
+}
+.modal-nav{display:flex;justify-content:space-between;gap:10px;margin-top:26px;flex-wrap:wrap;}
+.modal-nav button{
+  flex:1;min-width:110px;padding:10px 14px;border-radius:12px;border:1px solid rgba(190,130,255,.25);
+  background:rgba(40,22,64,.6);color:var(--ink);font-family:'Fredoka';font-weight:600;cursor:pointer;
+}
+.modal-nav button.primary{background:linear-gradient(135deg,var(--lilac-3),var(--violet-deep));color:#fff;border:none;box-shadow:var(--glow-strong);}
+
+/* ---------- AVANCE ---------- */
+.avance-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:24px;}
+.avance-card{padding:26px;text-align:center;}
+.avance-card h3{color:var(--ink);margin:0 0 6px;}
+.avance-card p{color:var(--dim);font-size:13px;margin:0 0 16px;}
+.stars-select{font-size:34px;letter-spacing:6px;cursor:pointer;}
+.stars-select span{color:rgba(140,110,180,.35);transition:.15s;}
+.stars-select span.filled{color:var(--gold);text-shadow:0 0 14px rgba(255,220,120,.8);}
+.avance-level{margin-top:10px;font-weight:700;color:var(--violet-bright);font-size:13px;}
+
+/* ---------- CONTACTO ---------- */
+.contact-wrap{display:flex;gap:24px;flex-wrap:wrap;}
+.contact-card{padding:28px;flex:1;min-width:230px;text-align:center;}
+.contact-card .ico{font-size:34px;margin-bottom:10px;filter:drop-shadow(0 0 10px rgba(190,130,255,.6));}
+.contact-card h4{margin:6px 0;color:var(--ink);}
+.contact-card p{margin:0;color:var(--dim);font-weight:600;}
+
+/* ---------- JUEGOS ---------- */
+.game-select{display:flex;gap:16px;margin-bottom:30px;flex-wrap:wrap;}
+.game-btn{padding:14px 22px;border-radius:16px;border:2px solid var(--violet-deep);background:rgba(40,22,64,.5);
+  color:var(--ink);font-family:'Fredoka';font-weight:600;cursor:pointer;}
+.game-btn.active{background:var(--violet-deep);color:#fff;box-shadow:var(--glow-strong);}
+.game-area{padding:28px;min-height:340px;}
+#quiz-q{font-size:17px;font-weight:700;color:var(--ink);margin-bottom:18px;}
+.quiz-opts{display:grid;gap:12px;}
+.quiz-opts button{
+  padding:13px 16px;border-radius:14px;border:2px solid rgba(190,130,255,.25);background:rgba(30,16,48,.6);
+  text-align:left;font-size:14.5px;cursor:pointer;font-family:'Quicksand';font-weight:600;color:var(--ink);
+}
+.quiz-opts button.correct{background:rgba(70,190,120,.25);border-color:#5fbf7a;}
+.quiz-opts button.wrong{background:rgba(220,90,90,.25);border-color:#e07a7a;}
+#quiz-score{margin-top:16px;font-weight:700;color:var(--violet-bright);}
+.memory-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;max-width:520px;margin:0 auto;}
+.mem-card{
+  aspect-ratio:1/1;border-radius:14px;background:linear-gradient(135deg,var(--lilac-3),var(--violet-deep));
+  display:flex;align-items:center;justify-content:center;color:#fff;font-size:13px;font-weight:700;
+  cursor:pointer;text-align:center;padding:6px;user-select:none;box-shadow:0 4px 14px rgba(0,0,0,.4);
+}
+.mem-card.flipped,.mem-card.matched{background:rgba(20,10,34,.9);color:var(--ink);border:2px solid rgba(190,130,255,.4);}
+.mem-card.matched{opacity:.5;}
+#mem-status{text-align:center;margin-top:16px;font-weight:700;color:var(--violet-bright);}
+
+footer{position:relative;z-index:2;text-align:center;padding:26px;color:var(--dim);font-size:13px;}
+
+@media(max-width:760px){
+  .topbar{flex-direction:column;gap:10px;}
+  .nav{justify-content:center;}
+  section{padding:50px 6vw 70px;}
+}
+</style>
+</head>
+<body>
+
+<div id="lighting">
+  <div class="spotlight s1"></div>
+  <div class="spotlight s2"></div>
+  <div class="spotlight s3"></div>
+</div>
+<div id="stars"></div>
+<div id="butterflies"></div>
+
+<div class="topbar">
+  <div class="logo-wrap" onclick="showSection('inicio')">
+    <div class="logo-badge"><span>NS</span></div>
+    <div class="logo-text">Nicoll Soria<small>PORTAFOLIO ACADÉMICO</small></div>
+  </div>
+  <nav class="nav">
+    <a href="#" class="active" onclick="showSection('inicio');return false;">Inicio</a>
+    <a href="#" onclick="showSection('biografia');return false;">Biografía</a>
+    <a href="#" onclick="showSection('unidades');return false;">Unidades</a>
+    <a href="#" onclick="showSection('avance');return false;">Avance</a>
+    <a href="#" onclick="showSection('contacto');return false;">Contacto</a>
+    <a href="#" onclick="showSection('juego');return false;">Juego</a>
+  </nav>
+</div>
+
+<main>
+
+<!-- INICIO -->
+<section id="inicio" class="active">
+  <div class="hero">
+    <div class="hero-text">
+      <h1>Hola, soy <span class="accent">Nicoll</span> ✦</h1>
+      <p class="tag">Estudiante de Ingeniería en Software de la Universidad Técnica de Cotopaxi</p>
+      <div class="badge-row">
+        <span>🎓 Ingeniería en Software</span>
+        <span>💜 Quito, Pichincha</span>
+        <span>✨ Aprendizaje constante</span>
+      </div>
+      <button class="btn-primary" onclick="showSection('biografia')">Conóceme</button>
+    </div>
+    <div class="photo-frame" id="photoFrame">
+      <span class="placeholder-icon">🦋</span>
+      <img id="photoImg" alt="Foto de perfil">
+      <button class="photo-edit-btn" onclick="document.getElementById('photoUpload').click()">📷</button>
+      <input type="file" id="photoUpload" accept="image/*">
+    </div>
+  </div>
+</section>
+
+<!-- BIOGRAFIA -->
+<section id="biografia">
+  <div class="bio-wrap">
+    <div class="bio-photo card" style="padding:14px;">
+      <div class="photo-frame" style="width:230px;height:280px;">
+        <span class="placeholder-icon" id="bioPlaceholder">🌙</span>
+        <img id="photoImgBio" alt="Foto de perfil">
+      </div>
+      <div class="as-stamp">A·S</div>
+    </div>
+    <div class="bio-content">
+      <h2>Biografía</h2>
+      <p class="desc">Soy una persona responsable, organizada y comprometida con cada actividad que realizo. Me caracterizo por aprender con rapidez, trabajar en equipo y mantener una actitud positiva ante los retos. Actualmente estudio Ingeniería en Software en la Universidad Técnica de Cotopaxi y busco fortalecer mis conocimientos y habilidades para crecer tanto personal como profesionalmente.</p>
+      <div class="data-grid">
+        <div class="data-item"><span class="ico">🧾</span><div><div class="lab">Nombre completo</div><div class="val">Nicoll Alexandra Soria Caisa</div></div></div>
+        <div class="data-item"><span class="ico">🎂</span><div><div class="lab">Edad</div><div class="val">18 años</div></div></div>
+        <div class="data-item"><span class="ico">🏙️</span><div><div class="lab">Ciudad</div><div class="val">Quito</div></div></div>
+        <div class="data-item"><span class="ico">🗺️</span><div><div class="lab">Provincia</div><div class="val">Pichincha</div></div></div>
+        <div class="data-item"><span class="ico">✉️</span><div><div class="lab">Correo electrónico</div><div class="val">sorianicol539@gmail.com</div></div></div>
+        <div class="data-item"><span class="ico">📅</span><div><div class="lab">Nacimiento</div><div class="val">8 de octubre de 2007</div></div></div>
+        <div class="data-item"><span class="ico">🏫</span><div><div class="lab">Colegio</div><div class="val">Consejo Provincial de Pichincha</div></div></div>
+        <div class="data-item"><span class="ico">🎓</span><div><div class="lab">Universidad</div><div class="val">Universidad Técnica de Cotopaxi</div></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- UNIDADES -->
+<section id="unidades">
+  <h2 class="section-title">Unidades</h2>
+  <p class="section-sub">Explora los temas de cada unidad. Toca una tarjeta para ver el contenido.</p>
+  <div class="unit-tabs">
+    <div class="unit-tab active" onclick="showUnit('u1')">Unidad 1</div>
+    <div class="unit-tab" onclick="showUnit('u2')">Unidad 2</div>
+    <div class="unit-tab" onclick="showUnit('u3')">Unidad 3</div>
+  </div>
+
+  <!-- UNIDAD 1 -->
+  <div class="unit-panel active" id="u1">
+    <div class="topic-grid" id="u1-grid"></div>
+  </div>
+
+  <!-- UNIDAD 2 -->
+  <div class="unit-panel" id="u2">
+    <div class="topic-grid" id="u2-grid"></div>
+  </div>
+
+  <!-- UNIDAD 3 -->
+  <div class="unit-panel" id="u3">
+    <div class="topic-grid" id="u3-grid"></div>
+  </div>
+</section>
+
+<!-- AVANCE -->
+<section id="avance">
+  <h2 class="section-title">Avance</h2>
+  <p class="section-sub">Selecciona el nivel de avance alcanzado en cada unidad.</p>
+  <div class="avance-grid">
+    <div class="avance-card card">
+      <h3>Unidad 1</h3><p>Fundamentos y numeración</p>
+      <div class="stars-select" data-unit="1">★★★★★</div>
+      <div class="avance-level" id="lvl-1">Sin calificar</div>
+    </div>
+    <div class="avance-card card">
+      <h3>Unidad 2</h3><p>Algoritmos y pseudocódigo</p>
+      <div class="stars-select" data-unit="2">★★★★★</div>
+      <div class="avance-level" id="lvl-2">Sin calificar</div>
+    </div>
+    <div class="avance-card card">
+      <h3>Unidad 3</h3><p>Programación en Python</p>
+      <div class="stars-select" data-unit="3">★★★★★</div>
+      <div class="avance-level" id="lvl-3">Sin calificar</div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACTO -->
+<section id="contacto">
+  <h2 class="section-title">Contacto</h2>
+  <p class="section-sub">Estoy disponible para cualquier consulta académica.</p>
+  <div class="contact-wrap">
+    <div class="contact-card card"><div class="ico">📱</div><h4>Teléfono</h4><p>09 59 90 61 38</p></div>
+    <div class="contact-card card"><div class="ico">✉️</div><h4>Correo</h4><p>sorianicol539@gmail.com</p></div>
+    <div class="contact-card card"><div class="ico">📍</div><h4>Ubicación</h4><p>Quito, Pichincha</p></div>
+  </div>
+</section>
+
+<!-- JUEGO -->
+<section id="juego">
+  <h2 class="section-title">Juegos</h2>
+  <p class="section-sub">Pon a prueba lo aprendido en las tres unidades.</p>
+  <div class="game-select">
+    <button class="game-btn active" onclick="showGame('quiz')">🧠 Trivia de las Unidades</button>
+    <button class="game-btn" onclick="showGame('memory')">🦋 Memorama Lila</button>
+  </div>
+
+  <div class="game-area card" id="game-quiz">
+    <div id="quiz-q"></div>
+    <div class="quiz-opts" id="quiz-opts"></div>
+    <div id="quiz-score">Puntaje: 0</div>
+  </div>
+
+  <div class="game-area card" id="game-memory" style="display:none;">
+    <div class="memory-grid" id="memory-grid"></div>
+    <div id="mem-status">Encuentra los pares relacionados con las 3 unidades</div>
+  </div>
+</section>
+
+</main>
+
+<footer>✦ Portafolio académico de Nicoll Soria · Ingeniería en Software · Universidad Técnica de Cotopaxi ✦</footer>
+
+<!-- MODAL -->
+<div class="modal-overlay" id="modalOverlay">
+  <div class="modal-box" id="modalBox"></div>
+</div>
+
+<script>
+/* ================= NAVIGATION ================= */
+function showSection(id){
+  document.querySelectorAll('section').forEach(s=>s.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+  document.querySelectorAll('.nav a').forEach(a=>a.classList.remove('active'));
+  const map={inicio:0,biografia:1,unidades:2,avance:3,contacto:4,juego:5};
+  document.querySelectorAll('.nav a')[map[id]].classList.add('active');
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+function showUnit(id){
+  document.querySelectorAll('.unit-panel').forEach(p=>p.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+  document.querySelectorAll('.unit-tab').forEach(t=>t.classList.remove('active'));
+  event.target.classList.add('active');
+}
+
+/* ================= BACKGROUND: STARS ================= */
+const starsWrap=document.getElementById('stars');
+for(let i=0;i<90;i++){
+  const s=document.createElement('div');
+  s.className='star';
+  const size=Math.random()*2.6+1;
+  s.style.width=size+'px';s.style.height=size+'px';
+  s.style.left=Math.random()*100+'vw';
+  s.style.top=Math.random()*100+'vh';
+  s.style.animationDelay=(Math.random()*3)+'s';
+  s.style.animationDuration=(2+Math.random()*3)+'s';
+  starsWrap.appendChild(s);
+}
+
+/* ================= BACKGROUND: 3D BUTTERFLIES ================= */
+const wingSVG=(side,glow,c1,c2)=>`<svg viewBox="0 0 32 64" style="filter:drop-shadow(0 0 6px ${glow})">
+<path d="${side==='l' ? 'M32 32 C16 4,0 10,4 30 C-2 44,14 56,32 34 Z' : 'M0 32 C16 4,32 10,28 30 C34 44,18 56,0 34 Z'}" fill="url(#g-${side}-${c1.slice(1)})"/>
+<defs><linearGradient id="g-${side}-${c1.slice(1)}" x1="0" y1="0" x2="1" y2="1">
+<stop offset="0%" stop-color="${c1}"/><stop offset="100%" stop-color="${c2}"/></linearGradient></defs>
+</svg>`;
+const bWrap=document.getElementById('butterflies');
+const bPalettes=[
+  {c1:"#c98bff",c2:"#6a2fb0",glow:"rgba(201,139,255,.7)"},
+  {c1:"#ff9fe0",c2:"#a259e8",glow:"rgba(255,159,224,.7)"},
+  {c1:"#ffe9a8",c2:"#b784f0",glow:"rgba(255,233,168,.6)"},
+  {c1:"#9fe0ff",c2:"#8b5cf6",glow:"rgba(159,224,255,.6)"}
+];
+for(let i=0;i<8;i++){
+  const b=document.createElement('div');
+  b.className='butterfly';
+  const p=bPalettes[i%bPalettes.length];
+  b.innerHTML=`
+    <div class="wing-l">${wingSVG('l',p.glow,p.c1,p.c2)}</div>
+    <div class="wing-r">${wingSVG('r',p.glow,p.c1,p.c2)}</div>
+    <div style="position:absolute;left:50%;top:6%;width:3px;height:88%;background:linear-gradient(#2a1345,#120820);
+      transform:translateX(-50%);border-radius:2px;"></div>`;
+  b.style.top=(Math.random()*70+5)+'vh';
+  b.style.animationDuration=(16+Math.random()*14)+'s';
+  b.style.animationDelay=(-Math.random()*24)+'s';
+  const scale=0.6+Math.random()*1.1;
+  b.style.setProperty('transform',`scale(${scale})`);
+  const flapDur=(0.28+Math.random()*0.22).toFixed(2);
+  b.querySelectorAll('.wing-l,.wing-r').forEach(w=>w.style.animationDuration=flapDur+'s');
+  bWrap.appendChild(b);
+}
+
+/* ================= PHOTO UPLOAD ================= */
+function showProfilePhoto(src, hidePlaceholder = true){
+  const imgs=[document.getElementById('photoImg'), document.getElementById('photoImgBio')];
+  imgs.forEach(img=>{
+    if(img){
+      img.src=src;
+      img.style.display='block';
+    }
+  });
+  const placeholders=[document.querySelector('#photoFrame .placeholder-icon'), document.getElementById('bioPlaceholder')];
+  placeholders.forEach(placeholder=>{
+    if(placeholder){
+      placeholder.style.display = hidePlaceholder ? 'none' : 'block';
+    }
+  });
+}
+
+document.getElementById('photoUpload').addEventListener('change',function(e){
+  const file=e.target.files[0];
+  if(!file) return;
+  const reader=new FileReader();
+  reader.onload=function(ev){
+    showProfilePhoto(ev.target.result, true);
+  };
+  reader.readAsDataURL(file);
+});
+
+showProfilePhoto('foto-perfil.jpg.jpeg', true);
+
+/* ================= UNIDAD 1 DATA ================= */
+const u1data=[
+{t:"Modelo de Von Neumann y Harvard",r:"Arquitecturas que organizan la CPU, la memoria y los dispositivos de una computadora.",
+ d:`<strong>Von Neumann:</strong> memoria única compartida para datos e instrucciones, con un solo bus. Es simple pero genera un cuello de botella al no poder leer datos e instrucciones simultáneamente.<br><br>
+ <strong>Harvard:</strong> memorias y buses separados para datos e instrucciones, lo que permite acceder a ambos al mismo tiempo. Se usa en microcontroladores y procesadores digitales de señal (DSP) por su mayor velocidad.`},
+{t:"Sistemas operativos",r:"Software que administra el hardware y actúa como intermediario entre el usuario y la máquina.",
+ d:`<strong>Funciones principales:</strong> gestión de procesos, administración de memoria, manejo de archivos, control de dispositivos y seguridad del sistema.<br><br>
+ <strong>Tipos:</strong> monousuario, multiusuario, de tiempo real y distribuidos. Ejemplos: Windows, Linux, macOS y Android.`},
+{t:"Sistemas de numeración y conversiones",r:"Formas de representar cantidades: binario, octal y hexadecimal.",
+ d:`<strong>Binario (base 2):</strong> usa 0 y 1; es el lenguaje interno de las computadoras.<br>
+ <strong>Octal (base 8):</strong> dígitos del 0 al 7; agrupa 3 bits.<br>
+ <strong>Hexadecimal (base 16):</strong> dígitos 0-9 y letras A-F; agrupa 4 bits y se usa en direcciones de memoria y colores web.<br><br>
+ <strong>Conversión:</strong> de decimal a otra base se hace con divisiones sucesivas; entre binario, octal y hexadecimal se agrupan los bits de 3 en 3 u 8 en 8.`},
+{t:"Aritmética binaria",r:"Operaciones matemáticas realizadas en base 2.",
+ d:`<strong>Suma:</strong> 0+0=0, 0+1=1, 1+1=10 (se genera acarreo).<br>
+ <strong>Resta, multiplicación y división</strong> siguen reglas similares a las decimales pero en base 2.<br><br>
+ <strong>Complemento a dos:</strong> técnica que permite representar números negativos y convertir la resta en una suma, muy usada en los procesadores.`},
+{t:"Álgebra de Bool",r:"Rama de las matemáticas que trabaja con valores lógicos verdadero/falso (1/0).",
+ d:`<strong>Operadores básicos:</strong> AND (multiplicación lógica), OR (suma lógica) y NOT (negación).<br><br>
+ <strong>Leyes:</strong> conmutativa, asociativa, distributiva y las leyes de De Morgan.<br><br>
+ <strong>Aplicación:</strong> es la base del diseño de circuitos digitales y compuertas lógicas en electrónica y computación.`}
+];
+const u1grid=document.getElementById('u1-grid');
+u1data.forEach((item,i)=>{
+  const card=document.createElement('div');
+  card.className='topic-card card';
+  card.innerHTML=`<span class="num">${String(i+1).padStart(2,'0')}</span>
+    <h3>${item.t}</h3><p>${item.r}</p><div class="go">Toca para ver más ▾</div>
+    <div class="detail-body">${item.d}</div>`;
+  card.onclick=()=>card.classList.toggle('open');
+  u1grid.appendChild(card);
+});
+
+/* ================= UNIDAD 2 DATA (modal con navegación) ================= */
+const u2data=[
+{t:"Algoritmos y sus características",
+ def:"Un algoritmo es una secuencia ordenada y finita de pasos que permite resolver un problema o realizar una tarea.",
+ exp:"Sus características principales son: ser definido (pasos claros), finito (termina en algún momento), tener entradas y salidas, y ser eficaz para resolver el problema planteado.",
+ ej:"Algoritmo para sumar dos números: 1) Leer A. 2) Leer B. 3) Calcular A+B. 4) Mostrar el resultado.",
+ code:`a = int(input("Ingrese A: "))\nb = int(input("Ingrese B: "))\nprint("Resultado:", a + b)`,
+ act:"Se diseñó y probó un algoritmo para calcular el promedio de tres calificaciones ingresadas por el usuario."},
+{t:"Diagramas de flujo",
+ def:"Representación gráfica de un algoritmo mediante símbolos estandarizados: óvalos (inicio/fin), rectángulos (procesos), rombos (decisiones) y flechas (flujo).",
+ exp:"Permiten visualizar la lógica de un algoritmo antes de programarlo, facilitando la detección de errores en el orden de los pasos.",
+ ej:"Diagrama para determinar si un número es par o impar, evaluando el residuo de dividir entre 2.",
+ code:`n = int(input("Ingrese un número: "))\nif n % 2 == 0:\n    print("Es par")\nelse:\n    print("Es impar")`,
+ act:"Se elaboró el diagrama de flujo correspondiente al algoritmo de número par/impar y se validó su lógica."},
+{t:"Pseudocódigo",
+ def:"Descripción de un algoritmo utilizando un lenguaje cercano al natural, sin la sintaxis estricta de un lenguaje de programación.",
+ exp:"Funciona como un puente entre la idea del algoritmo y su implementación real en código, siendo más fácil de leer que el código puro.",
+ ej:"Inicio\\nLeer nombre\\nEscribir \"Hola\" + nombre\\nFin",
+ code:`nombre = input("Ingrese su nombre: ")\nprint("Hola,", nombre)`,
+ act:"Se tradujo el pseudocódigo del algoritmo de saludo a código Python funcional y se ejecutó correctamente."},
+{t:"Modelado de problemas",
+ def:"Proceso de analizar un problema real y representarlo de forma abstracta para poder resolverlo computacionalmente.",
+ exp:"Incluye identificar los datos de entrada, la salida esperada, las restricciones y los pasos necesarios para llegar a la solución.",
+ ej:"Modelar el cálculo del área de un círculo a partir de su radio.",
+ code:`import math\nr = float(input("Ingrese el radio: "))\narea = math.pi * r ** 2\nprint("Área:", round(area, 2))`,
+ act:"Se modeló y resolvió el problema del cálculo del área de un círculo, identificando entradas y proceso."}
+];
+
+/* ================= UNIDAD 3 DATA (modal con navegación) ================= */
+const u3data=[
+{t:"Lenguajes y paradigmas de programación",
+ intro:"Los lenguajes de programación son herramientas que permiten comunicarnos con la computadora para indicarle qué tareas realizar.",
+ def:"Un paradigma de programación es un estilo o enfoque para estructurar y escribir código.",
+ imp:"Elegir el paradigma adecuado mejora la organización, mantenibilidad y eficiencia de un programa.",
+ car:"Cada paradigma tiene su propia forma de organizar datos y procesos: estructurado, orientado a objetos, funcional, entre otros.",
+ tip:"Estructurado, orientado a objetos (POO), funcional, lógico y declarativo.",
+ fun:"El programador elige el paradigma según el problema y luego aplica su lógica (secuencia, clases, funciones puras, etc.) para construir la solución.",
+ ejm:"Python permite tanto programación estructurada como orientada a objetos.",
+ ven:"Ventaja: mayor claridad y organización. Desventaja: curva de aprendizaje según el paradigma elegido.",
+ apl:"Desarrollo de software, videojuegos, aplicaciones móviles y sistemas empresariales.",
+ con:"Conocer los paradigmas permite elegir la mejor estrategia para resolver cada problema de programación."},
+{t:"Introducción a la programación en Python",
+ intro:"Python es un lenguaje de programación de alto nivel, fácil de leer y muy usado en la actualidad.",
+ def:"Es un lenguaje interpretado, de tipado dinámico y de propósito general.",
+ imp:"Es ideal para iniciar en la programación por su sintaxis sencilla y su gran cantidad de librerías.",
+ car:"Sintaxis clara, multiplataforma, con una comunidad muy grande y amplia documentación.",
+ tip:"Puede usarse para desarrollo web, ciencia de datos, inteligencia artificial, automatización, entre otros.",
+ fun:"El código se escribe en un archivo .py y se ejecuta mediante el intérprete de Python línea por línea.",
+ ejm:`print("¡Hola, mundo!")`,
+ ven:"Ventaja: fácil de aprender y muy versátil. Desventaja: puede ser más lento que otros lenguajes compilados.",
+ apl:"Automatización de tareas, análisis de datos, desarrollo web e inteligencia artificial.",
+ con:"Python es una excelente puerta de entrada al mundo de la programación por su simplicidad y potencia."},
+{t:"Operadores y Estructuras de Control Condicionales",
+ intro:"Los operadores permiten realizar cálculos y comparaciones, mientras que las estructuras condicionales permiten tomar decisiones en un programa.",
+ def:"Operadores algebraicos (+,-,*,/), relacionales (==, >, <) y lógicos (and, or, not); las condicionales evalúan una expresión y ejecutan código según sea verdadera o falsa.",
+ imp:"Permiten que un programa reaccione de forma distinta según los datos que recibe.",
+ car:"Los operadores relacionales devuelven verdadero o falso; los lógicos combinan condiciones; if/elif/else dirige el flujo del programa.",
+ tip:"Algebraicos, relacionales, lógicos; y estructuras if, if-else, if-elif-else.",
+ fun:"Se evalúa una condición y, según el resultado (verdadero o falso), el programa ejecuta un bloque de instrucciones u otro.",
+ ejm:`edad = int(input("Ingrese su edad: "))\nif edad >= 18:\n    print("Es mayor de edad")\nelse:\n    print("Es menor de edad")`,
+ ven:"Ventaja: permite crear programas dinámicos. Desventaja: un mal diseño de condiciones puede generar errores lógicos.",
+ apl:"Validación de formularios, sistemas de acceso, videojuegos y control de procesos.",
+ con:"Los operadores y condicionales son la base para que un programa tome decisiones inteligentes."},
+{t:"Estructuras de Control Repetitivas",
+ intro:"Permiten ejecutar un bloque de código varias veces sin tener que escribirlo repetidamente.",
+ def:"Son ciclos o bucles (for, while) que repiten instrucciones mientras se cumpla una condición o un número definido de veces.",
+ imp:"Ahorran tiempo y líneas de código al automatizar tareas repetitivas.",
+ car:"El ciclo for se usa cuando se conoce el número de repeticiones; el while se usa cuando depende de una condición.",
+ tip:"for (definido) y while (condicional/indefinido).",
+ fun:"El programa repite el bloque de instrucciones hasta que la condición de control deja de cumplirse o se recorre toda la secuencia.",
+ ejm:`for i in range(1, 6):\n    print("Número:", i)`,
+ ven:"Ventaja: automatiza tareas repetitivas. Desventaja: un mal control puede generar bucles infinitos.",
+ apl:"Recorrer listas, validar datos, generar tablas y automatizar procesos.",
+ con:"Las estructuras repetitivas son esenciales para escribir programas eficientes y automatizados."}
+];
+
+/* ================= RENDER TOPIC GRIDS 2 y 3 ================= */
+function renderGrid(gridId, data, opener){
+  const grid=document.getElementById(gridId);
+  data.forEach((item,i)=>{
+    const card=document.createElement('div');
+    card.className='topic-card card';
+    card.innerHTML=`<span class="num">${String(i+1).padStart(2,'0')}</span>
+      <h3>${item.t}</h3><p>${(item.def||item.intro).slice(0,90)}...</p>
+      <div class="go">Abrir contenido ▸</div>`;
+    card.onclick=()=>opener(i);
+    grid.appendChild(card);
+  });
+}
+renderGrid('u2-grid',u2data,i=>openModal2(i));
+renderGrid('u3-grid',u3data,i=>openModal3(i));
+
+/* ================= MODAL LOGIC ================= */
+const overlay=document.getElementById('modalOverlay');
+const modalBox=document.getElementById('modalBox');
+let currentUnit=null, currentIndex=0;
+
+function openModal2(i){currentUnit=2;currentIndex=i;renderModal2();overlay.classList.add('active');}
+function openModal3(i){currentUnit=3;currentIndex=i;renderModal3();overlay.classList.add('active');}
+function closeModal(){overlay.classList.remove('active');}
+
+function renderModal2(){
+  const it=u2data[currentIndex];
+  modalBox.innerHTML=`
+    <button class="modal-close" onclick="closeModal()">✕</button>
+    <h3>${it.t}</h3>
+    <div class="field-lab">Definición</div><p>${it.def}</p>
+    <div class="field-lab">Explicación</div><p>${it.exp}</p>
+    <div class="field-lab">Ejemplo</div><p>${it.ej}</p>
+    <div class="field-lab">Código en Python</div><pre>${it.code}</pre>
+    <div class="field-lab">Actividad realizada</div><p>${it.act}</p>
+    <div class="modal-nav">
+      <button onclick="navModal2(-1)">◂ Anterior</button>
+      <button onclick="closeModal();showUnit('u2');document.querySelectorAll('.unit-tab')[1].classList.add('active');document.querySelectorAll('.unit-tab')[0].classList.remove('active');document.querySelectorAll('.unit-tab')[2].classList.remove('active');">Volver a Unidad 2</button>
+      <button class="primary" onclick="navModal2(1)">Siguiente ▸</button>
+    </div>`;
+}
+function navModal2(dir){
+  currentIndex=(currentIndex+dir+u2data.length)%u2data.length;
+  renderModal2();
+}
+
+function renderModal3(){
+  const it=u3data[currentIndex];
+  modalBox.innerHTML=`
+    <button class="modal-close" onclick="closeModal()">✕</button>
+    <h3>${it.t}</h3>
+    <div class="field-lab">Introducción</div><p>${it.intro}</p>
+    <div class="field-lab">Definición</div><p>${it.def}</p>
+    <div class="field-lab">Importancia</div><p>${it.imp}</p>
+    <div class="field-lab">Características principales</div><p>${it.car}</p>
+    <div class="field-lab">Tipos o clasificación</div><p>${it.tip}</p>
+    <div class="field-lab">Funcionamiento o proceso</div><p>${it.fun}</p>
+    <div class="field-lab">Ejemplo práctico</div><pre>${it.ejm}</pre>
+    <div class="field-lab">Ventajas y desventajas</div><p>${it.ven}</p>
+    <div class="field-lab">Aplicaciones en la vida real</div><p>${it.apl}</p>
+    <div class="field-lab">Conclusión</div><p>${it.con}</p>
+    <div class="modal-nav">
+      <button onclick="navModal3(-1)">◂ Anterior</button>
+      <button onclick="closeModal();showUnit('u3');document.querySelectorAll('.unit-tab')[2].classList.add('active');document.querySelectorAll('.unit-tab')[0].classList.remove('active');document.querySelectorAll('.unit-tab')[1].classList.remove('active');">Volver a Unidades</button>
+      <button class="primary" onclick="navModal3(1)">Siguiente ▸</button>
+    </div>`;
+}
+function navModal3(dir){
+  currentIndex=(currentIndex+dir+u3data.length)%u3data.length;
+  renderModal3();
+}
+overlay.addEventListener('click',e=>{if(e.target===overlay) closeModal();});
+
+/* ================= AVANCE: ESTRELLAS ================= */
+document.querySelectorAll('.stars-select').forEach(container=>{
+  const unit=container.dataset.unit;
+  container.innerHTML='';
+  for(let i=1;i<=5;i++){
+    const sp=document.createElement('span');
+    sp.textContent='★';
+    sp.dataset.val=i;
+    sp.onclick=()=>setStars(unit,i);
+    container.appendChild(sp);
+  }
+});
+function setStars(unit,val){
+  const container=document.querySelector(`.stars-select[data-unit="${unit}"]`);
+  container.querySelectorAll('span').forEach(sp=>{
+    sp.classList.toggle('filled', +sp.dataset.val<=val);
+  });
+  const labels={1:"Iniciando",2:"En progreso",3:"Avance medio",4:"Avance alto",5:"¡Unidad dominada!"};
+  document.getElementById('lvl-'+unit).textContent=`${val}/5 · ${labels[val]}`;
+}
+
+/* ================= JUEGO 1: TRIVIA ================= */
+const quizBank=[
+ {q:"¿Qué arquitectura usa memorias separadas para datos e instrucciones?",o:["Von Neumann","Harvard","Hexadecimal","Booleana"],a:1},
+ {q:"¿Cuál es el equivalente binario de 2 decimal?",o:["01","10","11","100"],a:1},
+ {q:"¿Qué operador de álgebra de Bool representa la multiplicación lógica?",o:["OR","NOT","AND","XOR"],a:2},
+ {q:"¿Qué es un algoritmo?",o:["Un lenguaje de programación","Una secuencia finita de pasos para resolver un problema","Un tipo de dato","Un sistema operativo"],a:1},
+ {q:"¿Qué símbolo de un diagrama de flujo representa una decisión?",o:["Óvalo","Rectángulo","Rombo","Flecha"],a:2},
+ {q:"¿Qué estructura se usa cuando se conoce el número exacto de repeticiones?",o:["while","for","if","switch"],a:1},
+ {q:"¿Cuál función de Python imprime un mensaje en pantalla?",o:["input()","print()","read()","show()"],a:1},
+ {q:"¿Qué tipo de operador es '>' ?",o:["Algebraico","Relacional","Lógico","Booleano"],a:1},
+ {q:"¿Qué es el pseudocódigo?",o:["Un lenguaje compilado","Una descripción de un algoritmo en lenguaje casi natural","Un tipo de hardware","Un sistema numérico"],a:1},
+ {q:"¿Cuántos dígitos usa el sistema hexadecimal?",o:["2","8","10","16"],a:3},
+];
+let quizScore=0, quizCurrent=null;
+function newQuestion(){
+  quizCurrent=quizBank[Math.floor(Math.random()*quizBank.length)];
+  document.getElementById('quiz-q').textContent=quizCurrent.q;
+  const optsWrap=document.getElementById('quiz-opts');
+  optsWrap.innerHTML='';
+  quizCurrent.o.forEach((opt,i)=>{
+    const b=document.createElement('button');
+    b.textContent=opt;
+    b.onclick=()=>checkAnswer(i,b);
+    optsWrap.appendChild(b);
+  });
+}
+function checkAnswer(i,btn){
+  const buttons=document.querySelectorAll('#quiz-opts button');
+  buttons.forEach(b=>b.disabled=true);
+  if(i===quizCurrent.a){
+    btn.classList.add('correct');
+    quizScore++;
+  }else{
+    btn.classList.add('wrong');
+    buttons[quizCurrent.a].classList.add('correct');
+  }
+  document.getElementById('quiz-score').textContent='Puntaje: '+quizScore;
+  setTimeout(newQuestion,1300);
+}
+newQuestion();
+
+/* ================= JUEGO 2: MEMORAMA ================= */
+const memPairs=["Binario","1010","AND","Compuerta","Algoritmo","Pasos","Python","print()","Harvard","Buses","Bucle","for i in range"];
+function shuffle(arr){return arr.map(v=>[Math.random(),v]).sort((a,b)=>a[0]-b[0]).map(v=>v[1]);}
+let memFlipped=[], memMatched=0, memLock=false;
+function buildMemory(){
+  const grid=document.getElementById('memory-grid');
+  grid.innerHTML='';
+  memFlipped=[];memMatched=0;memLock=false;
+  document.getElementById('mem-status').textContent='Encuentra los pares relacionados con las 3 unidades';
+  const cards=shuffle(memPairs.slice());
+  cards.forEach((val,idx)=>{
+    const c=document.createElement('div');
+    c.className='mem-card';
+    c.dataset.val=val;
+    c.dataset.idx=idx;
+    c.textContent='✦';
+    c.onclick=()=>flipCard(c);
+    grid.appendChild(c);
+  });
+}
+function flipCard(c){
+  if(memLock||c.classList.contains('flipped')||c.classList.contains('matched'))return;
+  c.classList.add('flipped');
+  c.textContent=c.dataset.val;
+  memFlipped.push(c);
+  if(memFlipped.length===2){
+    memLock=true;
+    const [a,b]=memFlipped;
+    if(a.dataset.val===b.dataset.val && a.dataset.idx!==b.dataset.idx){
+      setTimeout(()=>{
+        a.classList.add('matched');b.classList.add('matched');
+        memFlipped=[];memLock=false;memMatched++;
+        if(memMatched===memPairs.length/2){
+          document.getElementById('mem-status').textContent='¡Completado! 🦋 Todos los pares encontrados';
+        }
+      },500);
+    }else{
+      setTimeout(()=>{
+        a.classList.remove('flipped');b.classList.remove('flipped');
+        a.textContent='✦';b.textContent='✦';
+        memFlipped=[];memLock=false;
+      },800);
+    }
+  }
+}
+buildMemory();
+
+function showGame(name){
+  document.getElementById('game-quiz').style.display = name==='quiz' ? 'block':'none';
+  document.getElementById('game-memory').style.display = name==='memory' ? 'block':'none';
+  document.querySelectorAll('.game-btn').forEach(b=>b.classList.remove('active'));
+  event.target.classList.add('active');
+  if(name==='memory') buildMemory();
+}
+</script>
+</body>
+</html>
